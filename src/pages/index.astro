@@ -134,6 +134,8 @@ for (const [index, s] of sorted.entries()) {
     <div id="planned-countries-data" style="display:none" data-countries={JSON.stringify(Array.from(plannedCountries))}></div>
   </main>
 
+  <div id="page-loader" aria-hidden="true"></div>
+
 </Layout>
 
 <script is:inline>
@@ -460,12 +462,25 @@ for (const [index, s] of sorted.entries()) {
       lightbox.dataset.bound = 'true';
     }
 
+    const loader = document.getElementById('page-loader');
+    let loaderDone = false;
+    function fadeOutLoader() {
+      if (loaderDone || !loader) return;
+      loaderDone = true;
+      loader.classList.add('fade-out');
+      loader.addEventListener('transitionend', () => loader.remove(), { once: true });
+    }
+
     // Safety timeout — hide loading indicator even if tiles are slow
-    setTimeout(() => { if (mapStatus) mapStatus.classList.add('hidden'); }, 3000);
+    setTimeout(() => {
+      if (mapStatus) mapStatus.classList.add('hidden');
+      fadeOutLoader();
+    }, 3000);
 
     map.on('load', async () => {
       map.resize();
       if (mapStatus) mapStatus.classList.add('hidden');
+      fadeOutLoader();
 
       let countriesData = null;
       for (const url of [
@@ -548,6 +563,7 @@ for (const [index, s] of sorted.entries()) {
 
     map.on('error', () => {
       if (mapStatus) { mapStatus.textContent = 'Map failed to load'; mapStatus.classList.remove('hidden'); }
+      fadeOutLoader();
     });
   }
 
@@ -588,6 +604,20 @@ for (const [index, s] of sorted.entries()) {
   .maplibregl-canvas-container,
   .maplibregl-canvas {
     background: #E6E1D9;
+  }
+
+  #page-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background-color: #F0EBE3;
+    opacity: 1;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+  }
+
+  #page-loader.fade-out {
+    opacity: 0;
   }
 
   .country-label {
