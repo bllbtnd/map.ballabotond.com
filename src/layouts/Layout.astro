@@ -1,0 +1,128 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  keywords?: string;
+}
+
+const {
+  title = 'My Map | Balla Botond',
+  description = 'A map of places I have visited and places I plan to visit.',
+  keywords = 'Balla Botond, map, travel, stories, places',
+} = Astro.props;
+
+const siteUrl = 'https://map.ballabotond.com';
+const canonicalURL = new URL(Astro.url.pathname, siteUrl).toString();
+---
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="Balla Botond" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Balla Botond" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://ballabotond.com/assets/images/profile.webp" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@bllbtnd" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://ballabotond.com/assets/images/profile.webp" />
+
+    <!-- Theme -->
+    <meta name="theme-color" content="#F0EBE3" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://ballabotond.com/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="https://ballabotond.com/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://ballabotond.com/apple-touch-icon.png" />
+
+    <!-- GA4 Consent Mode v2 -->
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        functionality_storage: 'denied',
+        personalization_storage: 'denied',
+        security_storage: 'granted',
+        wait_for_update: 800,
+      });
+      if (localStorage.getItem('cookie_consent') === 'accepted') {
+        gtag('consent', 'update', { analytics_storage: 'granted' });
+      }
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3NZN7X2WL9"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-3NZN7X2WL9');
+    </script>
+
+    <style is:global>
+      html {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+      }
+
+      body {
+        font-family: 'Space Grotesk', system-ui, sans-serif;
+        background-color: #F0EBE3;
+        color: #1A1A1A;
+        overflow-x: clip;
+      }
+
+      html, body {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      html::-webkit-scrollbar,
+      body::-webkit-scrollbar {
+        display: none;
+      }
+
+      ::selection {
+        background-color: #7A6C5D;
+        color: #F9F9F7;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      .pf-serif {
+        font-family: 'Instrument Serif', Georgia, serif;
+      }
+      .pf-grotesk {
+        font-family: 'Space Grotesk', system-ui, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

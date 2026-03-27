@@ -1,0 +1,110 @@
+{
+  "acropolis of athens, greece": {
+    "lat": 37.9716894,
+    "lng": 23.7263197
+  },
+  "kezmarok, slovakia": {
+    "lat": 49.1362088,
+    "lng": 20.4308701
+  },
+  "balatonmagyaród, hungary": {
+    "lat": 46.5914387,
+    "lng": 17.1790969
+  },
+  "vysoké tatry, slovakia": {
+    "lat": 49.1999166,
+    "lng": 20.179831
+  },
+  "lomnický štít, slovakia": {
+    "lat": 49.1951431,
+    "lng": 20.2130329
+  },
+  "hydra, greece": {
+    "lat": 37.3321076,
+    "lng": 23.4664237
+  },
+  "sóstó zoo , hungary": {
+    "lat": 47.9992649,
+    "lng": 21.7264096
+  },
+  "pécs, hungary": {
+    "lat": 46.0765092,
+    "lng": 18.2280317
+  },
+  "kasprowy wierch, poland": {
+    "lat": 49.2318014,
+    "lng": 19.9815609
+  },
+  "wieliczka salt mine, poland": {
+    "lat": 49.9830482,
+    "lng": 20.0557077
+  },
+  "kraków, poland": {
+    "lat": 50.0619474,
+    "lng": 19.9368564
+  },
+  "morskie oko, poland": {
+    "lat": 49.1973771,
+    "lng": 20.0707166
+  },
+  "zakopane, poland": {
+    "lat": 49.2969114,
+    "lng": 19.9504753
+  },
+  "mostar, bosnia and herzegovina": {
+    "lat": 43.3435855,
+    "lng": 17.8076584
+  },
+  "zlatni rat, croatia": {
+    "lat": 43.2570897,
+    "lng": 16.6346469
+  },
+  "jelsa, croatia": {
+    "lat": 43.1608097,
+    "lng": 16.6931431
+  },
+  "esztergom, hungary": {
+    "lat": 47.7856939,
+    "lng": 18.7403377
+  },
+  "balatongyörök, hungary": {
+    "lat": 46.7616172,
+    "lng": 17.3504857
+  },
+  "radhimë, albania": {
+    "lat": 40.3699401,
+    "lng": 19.4950193
+  },
+  "berat, albania": {
+    "lat": 40.7018636,
+    "lng": 19.9580758
+  },
+  "split, croatia": {
+    "lat": 43.5116383,
+    "lng": 16.4399659
+  },
+  "bačka topola, republic of serbia": {
+    "lat": 45.8121657,
+    "lng": 19.6304705
+  },
+  "piran, slovenia": {
+    "lat": 45.5284919,
+    "lng": 13.5684485
+  },
+  "tel aviv, israel": {
+    "lat": 32.0852997,
+    "lng": 34.7818064
+  },
+  "podgorica, montenegro": {
+    "lat": 42.4415238,
+    "lng": 19.2621081
+  },
+  "red lake, romania": {
+    "lat": 46.7880712,
+    "lng": 25.7868105
+  },
+  "vienna, austria": {
+    "lat": 48.2083537,
+    "lng": 16.3725042
+  }
+}
