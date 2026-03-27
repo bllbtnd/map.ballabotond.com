@@ -16,6 +16,7 @@ type StorySourceItem = {
   image?: string;
   date?: string;
   location?: string | [number, number];
+  coordinate?: [number, number];
   label?: string;
 };
 
@@ -46,23 +47,32 @@ for (const [index, s] of sorted.entries()) {
   let lng = 0;
   let label = '';
 
-  if (!s.location) {
+  if (!s.location && !s.coordinate) {
     continue;
   } else if (Array.isArray(s.location)) {
     lat = s.location[0];
     lng = s.location[1];
-    label = (s as any).label || `${lat.toFixed(2)}, ${lng.toFixed(2)}`;
-  } else {
+    label = s.label || `${lat.toFixed(2)}, ${lng.toFixed(2)}`;
+  } else if (typeof s.location === 'string') {
     label = s.location;
     const labelParts = s.location.split(',').map((part) => part.trim()).filter(Boolean);
     if (labelParts.length > 0) {
       visitedCountries.add(labelParts[labelParts.length - 1]);
     }
-    const coords = await geocode(s.location);
-    if (coords) {
-      lat = coords.lat;
-      lng = coords.lng;
+    if (s.coordinate) {
+      lat = s.coordinate[0];
+      lng = s.coordinate[1];
+    } else {
+      const coords = await geocode(s.location);
+      if (coords) {
+        lat = coords.lat;
+        lng = coords.lng;
+      }
     }
+  } else if (s.coordinate) {
+    lat = s.coordinate[0];
+    lng = s.coordinate[1];
+    label = `${lat.toFixed(2)}, ${lng.toFixed(2)}`;
   }
 
   if (lat === 0 && lng === 0) continue;
